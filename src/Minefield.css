@@ -1,0 +1,16 @@
+#minefield{
+
+    .row {
+        background-color: blue;
+        margin: 0px;    
+        padding: 0px;    
+    }
+    .cell {
+        background-color: lightgray;
+        border: 1px solid black;        
+        margin: 0px;
+        height: 25px;
+        max-width: 25px;
+    }
+
+}
