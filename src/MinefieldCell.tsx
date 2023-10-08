@@ -1,7 +1,11 @@
 import { useState } from 'react';
-import { Icon } from 'semantic-ui-react';
+import { CellReveal } from './CellReveal';
 
-export const MinefieldCell = () => {
+interface MinefieldCellProps {
+  bombCount: number;
+}
+
+export const MinefieldCell = ({ bombCount }: MinefieldCellProps) => {
   const userReveal = () => {
     setReveal(true);
   };
@@ -9,7 +13,7 @@ export const MinefieldCell = () => {
   const [reveal, setReveal] = useState(false);
 
   const inner = reveal ? (
-    <Icon name="bomb" size="large" />
+    <CellReveal bombCount={bombCount} />
   ) : (
     <button className="cell" onClick={userReveal}></button>
   );
