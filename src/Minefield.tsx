@@ -1,12 +1,10 @@
 import './Minefield.css';
 import { MinefieldCell } from './MinefieldCell';
+import { useMinefield } from './useMinefield';
 
 export const Minefield = () => {
-  const minefieldCells: number[][] = [
-    [0, 1, 1],
-    [0, 1, -1],
-    [0, 1, 1],
-  ];
+  const { minefieldCells } = useMinefield(3, 3);
+
   let rowIndex = 0;
   let cellIndex = 0;
 
