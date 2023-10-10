@@ -1,8 +1,8 @@
-import './Minefield.css';
+import './MinefieldPanel.css';
 import { MinefieldCell } from './MinefieldCell';
 import { useMinefield } from './useMinefield';
 
-export const Minefield = () => {
+export const MinefieldPanel = () => {
   const { minefieldCells } = useMinefield(3, 3);
 
   let rowIndex = 0;

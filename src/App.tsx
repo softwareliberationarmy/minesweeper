@@ -1,5 +1,5 @@
 import './App.css';
-import { Minefield } from './Minefield';
+import { MinefieldPanel } from './MinefieldPanel';
 
 function App() {
   const createNewGame = () => alert('Hello!');
@@ -10,7 +10,7 @@ function App() {
       <div>
         <button onClick={createNewGame}>New Game</button>
       </div>
-      <Minefield  />
+      <MinefieldPanel />
     </>
   );
 }
