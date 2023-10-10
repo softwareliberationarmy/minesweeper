@@ -3,20 +3,15 @@ export class Minefield {
 
   constructor(rows: number, columns: number) {
     this.minefieldCells = this.createEmptyMinefield(rows, columns);
+    this.buryTheMines(rows, columns);
+  }
 
+  private buryTheMines(rows: number, columns: number) {
     const totalCells = rows * columns;
     const totalMines = Math.floor(totalCells * 0.2);
 
-    this.buryTheMines(totalMines, rows, columns);
-  }
-
-  private buryTheMines(totalBombs: number, rows: number, columns: number) {
-    for (let bombCount = 0; bombCount < totalBombs; bombCount++) {
-      const nextBomb = this.getNextBombLocation(
-        this.minefieldCells,
-        rows,
-        columns
-      );
+    for (let bombCount = 0; bombCount < totalMines; bombCount++) {
+      const nextBomb = this.getNextBombLocation(rows, columns);
       this.minefieldCells[nextBomb.x][nextBomb.y] = -1;
       this.updateNeighborCounts(nextBomb, rows, columns);
     }
@@ -32,7 +27,7 @@ export class Minefield {
         if (
           this.isInRange(x, rows) &&
           this.isInRange(y, columns) &&
-          this.isNotABomb(x, y)
+          !this.isAMine(x, y)
         ) {
           this.minefieldCells[x][y]++;
         }
@@ -40,21 +35,17 @@ export class Minefield {
     }
   }
 
-  private isNotABomb(x: number, y: number) {
-    return this.minefieldCells[x][y] !== -1;
+  private isAMine(x: number, y: number) {
+    return this.minefieldCells[x][y] === -1;
   }
 
-  private getNextBombLocation(
-    minefieldCells: number[][],
-    rows: number,
-    columns: number
-  ) {
+  private getNextBombLocation(rows: number, columns: number) {
     let x = -1;
     let y = -1;
     do {
       x = Math.floor(Math.random() * rows);
       y = Math.floor(Math.random() * columns);
-    } while (this.isNotABomb(x, y));
+    } while (this.isAMine(x, y));
 
     return { x, y };
   }
