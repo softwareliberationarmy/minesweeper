@@ -1,6 +1,6 @@
 import './MinefieldPanel.css';
 import { MinefieldCell } from './MinefieldCell';
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 
 interface MinefieldPanelProps {
   minefieldCells: number[][];
