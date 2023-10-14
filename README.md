@@ -6,4 +6,3 @@ You know it, you love it, you wish there was a React.JS version.
 
 - evaluate win/loss status and report it to the user
 - allow user to right-click and flag cells
-- get rid of button rounding

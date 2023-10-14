@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CellReveal } from './CellReveal';
+import './MinefieldCell.css';
 
 interface MinefieldCellProps {
   bombCount: number;
