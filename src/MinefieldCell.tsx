@@ -6,14 +6,17 @@ import { Icon } from "semantic-ui-react";
 interface MinefieldCellProps {
   bombCount: number;
   lastRunDate: Date;
+  onReveal: (bombCount: number) => void;
 }
 
 export const MinefieldCell = ({
   bombCount,
   lastRunDate,
+  onReveal,
 }: MinefieldCellProps) => {
   const userReveal = () => {
     setReveal(true);
+    onReveal(bombCount);
   };
 
   const [reveal, setReveal] = useState(false);
