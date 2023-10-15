@@ -1,7 +1,7 @@
 import "./MinefieldPanel.css";
 import { MinefieldCell } from "./MinefieldCell";
 import { useMemo } from "react";
-import { Mineplot } from "./Mineplot";
+import { Mineplot } from "./domain/Mineplot";
 
 interface MinefieldPanelProps {
   minefieldCells: Mineplot[][];

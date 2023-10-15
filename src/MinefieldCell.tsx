@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { CellReveal } from "./CellReveal";
 import "./MinefieldCell.css";
 import { Icon } from "semantic-ui-react";
-import { Mineplot } from "./Mineplot";
+import { Mineplot } from "./domain/Mineplot";
 
 interface MinefieldCellProps {
   plot: Mineplot;

@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react';
-import { Minefield } from './Minefield';
+import { useMemo, useState } from "react";
+import { Minefield } from "./domain/Minefield";
 
 export const useMinefield = (rows: number, columns: number) => {
   const [lastRunDate, setLastRunDate] = useState<Date>(new Date());
