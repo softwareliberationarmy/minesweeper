@@ -1,3 +1,5 @@
+import { Mineplot } from "./Mineplot";
+
 export class Minefield {
   private minefieldCells: number[][] = [];
 
@@ -66,7 +68,9 @@ export class Minefield {
     return x >= 0 && x < count;
   }
 
-  public getMinefieldCells(): number[][] {
-    return this.minefieldCells;
+  public getMinefieldCells(): Mineplot[][] {
+    return this.minefieldCells.map((row) =>
+      row.map((cell) => new Mineplot(cell))
+    );
   }
 }

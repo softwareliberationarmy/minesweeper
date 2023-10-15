@@ -34,9 +34,9 @@ function App() {
       {status === "in progress" ? (
         <h2>Don't step on a mine!</h2>
       ) : status === "won" ? (
-        <h2>You won!</h2>
+        <h2 style={{ color: "green" }}>You won!</h2>
       ) : (
-        <h2>You lost!</h2>
+        <h2 style={{ color: "red" }}>You lost!</h2>
       )}
       <div>
         <label htmlFor="rowInput">Rows:</label>

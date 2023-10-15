@@ -2,21 +2,23 @@ import { useEffect, useState } from "react";
 import { CellReveal } from "./CellReveal";
 import "./MinefieldCell.css";
 import { Icon } from "semantic-ui-react";
+import { Mineplot } from "./Mineplot";
 
 interface MinefieldCellProps {
-  bombCount: number;
+  plot: Mineplot;
   lastRunDate: Date;
   onReveal: (bombCount: number) => void;
 }
 
 export const MinefieldCell = ({
-  bombCount,
+  plot,
   lastRunDate,
   onReveal,
 }: MinefieldCellProps) => {
   const userReveal = () => {
     setReveal(true);
-    onReveal(bombCount);
+    plot.reveal();
+    onReveal(plot.bombCount);
   };
 
   const [reveal, setReveal] = useState(false);
@@ -34,7 +36,7 @@ export const MinefieldCell = ({
   };
 
   const inner = reveal ? (
-    <CellReveal bombCount={bombCount} />
+    <CellReveal bombCount={plot.bombCount} />
   ) : (
     <button
       className="cell"

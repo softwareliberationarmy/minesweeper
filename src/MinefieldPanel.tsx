@@ -1,9 +1,10 @@
 import "./MinefieldPanel.css";
 import { MinefieldCell } from "./MinefieldCell";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
+import { Mineplot } from "./Mineplot";
 
 interface MinefieldPanelProps {
-  minefieldCells: number[][];
+  minefieldCells: Mineplot[][];
   lastRunDate: Date;
   onWin: () => void;
   onLoss: () => void;
@@ -15,15 +16,6 @@ export const MinefieldPanel = ({
   onWin,
   onLoss,
 }: MinefieldPanelProps) => {
-  const safeCount = minefieldCells.flat().filter((c) => c !== -1).length;
-  const [remainingSafe, setRemainingSafe] = useState(safeCount);
-
-  useEffect(() => {
-    if (remainingSafe === 0) {
-      onWin();
-    }
-  }, [remainingSafe, onWin]);
-
   const table = useMemo(() => {
     let rowIndex = 0;
     let cellIndex = 0;
@@ -33,7 +25,12 @@ export const MinefieldPanel = ({
         console.log("panel update, bomb drop");
         onLoss();
       } else {
-        setRemainingSafe((current) => current - 1);
+        const remainingSafe = minefieldCells
+          .flat()
+          .filter((c) => c.bombCount !== -1 && !c.isRevealed).length;
+        if (remainingSafe === 0) {
+          onWin();
+        }
       }
     };
 
@@ -42,11 +39,11 @@ export const MinefieldPanel = ({
         <tbody>
           {minefieldCells.map((row) => (
             <tr key={rowIndex++} className="row">
-              {row.map((bombCount) => (
+              {row.map((plot) => (
                 <MinefieldCell
                   onReveal={onReveal}
                   key={cellIndex++}
-                  bombCount={bombCount}
+                  plot={plot}
                   lastRunDate={lastRunDate}
                 />
               ))}
