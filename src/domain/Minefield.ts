@@ -8,6 +8,18 @@ export class Minefield {
     this.buryTheMines(rows, columns);
   }
 
+  private createEmptyMinefield(rows: number, columns: number) {
+    const minefieldCells: number[][] = [];
+
+    for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
+      minefieldCells.push([]);
+      for (let columnIndex = 0; columnIndex < columns; columnIndex++) {
+        minefieldCells[rowIndex].push(0);
+      }
+    }
+    return minefieldCells;
+  }
+
   private buryTheMines(rows: number, columns: number) {
     const totalCells = rows * columns;
     const totalMines = Math.floor(totalCells * 0.2);
@@ -26,15 +38,24 @@ export class Minefield {
   ) {
     for (let x = nextBomb.x - 1; x <= nextBomb.x + 1; x++) {
       for (let y = nextBomb.y - 1; y <= nextBomb.y + 1; y++) {
-        if (
-          this.isInRange(x, rows) &&
-          this.isInRange(y, columns) &&
-          !this.isAMine(x, y)
-        ) {
+        if (this.isAValidEmptyCell(x, rows, y, columns)) {
           this.minefieldCells[x][y]++;
         }
       }
     }
+  }
+
+  private isAValidEmptyCell(
+    x: number,
+    rows: number,
+    y: number,
+    columns: number
+  ) {
+    return (
+      this.isInRange(x, rows) &&
+      this.isInRange(y, columns) &&
+      !this.isAMine(x, y)
+    );
   }
 
   private isAMine(x: number, y: number) {
@@ -52,23 +73,11 @@ export class Minefield {
     return { x, y };
   }
 
-  private createEmptyMinefield(rows: number, columns: number) {
-    const minefieldCells: number[][] = [];
-
-    for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
-      minefieldCells.push([]);
-      for (let columnIndex = 0; columnIndex < columns; columnIndex++) {
-        minefieldCells[rowIndex].push(0);
-      }
-    }
-    return minefieldCells;
-  }
-
   private isInRange(x: number, count: number) {
     return x >= 0 && x < count;
   }
 
-  public getMinefieldCells(): Mineplot[][] {
+  public getMinefieldPlots(): Mineplot[][] {
     return this.minefieldCells.map((row) =>
       row.map((cell) => new Mineplot(cell))
     );

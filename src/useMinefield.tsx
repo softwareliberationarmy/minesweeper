@@ -13,7 +13,7 @@ export const useMinefield = (rows: number, columns: number) => {
   };
 
   return {
-    minefieldCells: mineField.getMinefieldCells(),
+    minefieldCells: mineField.getMinefieldPlots(),
     resetCells,
     lastRunDate,
   };
