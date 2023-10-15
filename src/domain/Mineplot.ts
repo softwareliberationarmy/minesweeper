@@ -1,3 +1,5 @@
+//Mineplot is the domain class representing a single cell in the minefield.
+//It's responsible for managing the count of bombs in its neighborhood and whether it's been revealed or not.
 export class Mineplot {
   private revealed: boolean = false;
 
