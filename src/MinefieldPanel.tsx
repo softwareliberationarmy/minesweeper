@@ -22,7 +22,6 @@ export const MinefieldPanel = ({
 
     const onReveal = (bombCount: number) => {
       if (bombCount === -1) {
-        console.log("panel update, bomb drop");
         onLoss();
       } else {
         const remainingSafe = minefieldCells

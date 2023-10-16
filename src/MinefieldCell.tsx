@@ -26,6 +26,7 @@ export const MinefieldCell = ({
 
   useEffect(() => {
     setReveal(false);
+    setShowFlag(false);
   }, [lastRunDate]);
 
   const onRightClickButton = (
