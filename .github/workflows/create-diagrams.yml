@@ -11,19 +11,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@master
       - name: Generate by type
-        uses: githubocto/repo-visualizer@main
+        uses: kerry-patrick-il/repo-visualizer@main
         with:
           excluded_paths: "ignore,.github"
           output_file: diagram_type.svg
       - name: Generate by number of changes
-        uses: githubocto/repo-visualizer@main
+        uses: kerry-patrick-il/repo-visualizer@main
         with:
           excluded_paths: "ignore,.github"
           output_file: diagram_num_changes.svg
           color_encoding: "number-of-changes"
       - name: Generate by latest changes
-        uses: githubocto/repo-visualizer@main
+        uses: kerry-patrick-il/repo-visualizer@main
         with:
           excluded_paths: "ignore,.github"
           output_file: diagram_last_change.svg
           color_encoding: "last-change"
+
